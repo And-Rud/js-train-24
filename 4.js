@@ -21,6 +21,20 @@ function task4() {
   // Повідомлення про помилку від першого відхиленого проміса передається у функцію catch, виводимо в консоль помилку
   // Функція finally викликається незалежно від того, чи вирішено проміс, чи відхилено
   // Виводимо в консоль "Всі операції завершено"
+  function promise1() {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, `Проміс 1 виконано`);
+    });
+  }
+  function promise2() {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, 1000, `Проміс 2 виконано`);
+    });
+  }
+  Promise.all([promise1(), promise2()])
+    .then((data) => console.log(`[${data}]`))
+    .catch((error) => console.log(error))
+    .finally(() => console.log(`Всі операції завершено`));
 }
 
 // Викликаємо функцію task4
